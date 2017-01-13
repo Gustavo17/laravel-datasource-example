@@ -21,6 +21,8 @@
             <div class="container">
                 <h2 class="text-center">Using vue-datasource with Laravel Pagination (Server Side)</h2>
                 <h4 class="text-center">Created by <a href="https://github.com/coderdiaz/vue-datasource">@coderdiaz</a></h4>
+                <div class="text-center">Powered by <img src="images/algolia_logotype.svg" width="70"></div>
+                <br>
                 <datasource
                     language="en"
                     :table-data="users.data"

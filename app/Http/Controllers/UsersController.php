@@ -22,22 +22,20 @@ class UsersController extends Controller
         // Searching method
         // You can use a full-text-search Algolia, Elastic Search, etc ..
         $searching = $request->search;
-        $data = User::search($searching);
-
-        $collection = $data->paginate($per_page);
+        $data = User::search($searching)->paginate($per_page);
 
         return [
             'pagination' => [
-                'total' => $collection->total(),
-                'per_page' => $collection->perPage(),
-                'current_page' => $collection->currentPage(),
-                'last_page' => $collection->lastPage(),
-                'next_page_url' => $collection->nextPageUrl(),
-                'prev_page_url' => $collection->previousPageUrl(),
-                'from' => $collection->firstItem(),
-                'to' => $collection->lastItem(),
+                'total' => $data->total(),
+                'per_page' => $data->perPage(),
+                'current_page' => $data->currentPage(),
+                'last_page' => $data->lastPage(),
+                'next_page_url' => $data->nextPageUrl(),
+                'prev_page_url' => $data->previousPageUrl(),
+                'from' => $data->firstItem(),
+                'to' => $data->lastItem(),
             ],
-            'data' => $data->get()
+            'data' => $data->items()
         ];
     }
 }
