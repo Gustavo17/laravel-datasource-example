@@ -22,12 +22,7 @@ class UsersController extends Controller
         // Searching method
         // You can use a full-text-search Algolia, Elastic Search, etc ..
         $searching = $request->search;
-        $data = User::where('name', 'LIKE', '%'.$searching.'%')
-            ->orWhere('email', 'LIKE', '%'.$searching.'%')
-            ->orWhere('city', 'LIKE', '%'.$searching.'%')
-            ->orWhere('city', 'LIKE', '%'.$searching.'%')
-            ->orWhere('company', 'LIKE', '%'.$searching.'%')
-            ->orWhere('job', 'LIKE', '%'.$searching.'%');
+        $data = User::search($searching);
 
         $collection = $data->paginate($per_page);
 
